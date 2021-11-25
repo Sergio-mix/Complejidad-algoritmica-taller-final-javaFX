@@ -25,28 +25,28 @@ public class CaloriasNutricionista {
         return sum;
     }
 
-    private void algorítmica(int aux) {
+    private void algorítmica(int aux, int pl) {
         if (this.sumatoriaCalorias() >= this.maxCalorias) {
             return;
         } else {
-
-            if (this.menu.get(aux).getCalorias() + this.sumatoriaCalorias() == this.maxCalorias) {
-                this.resultado.add(this.menu.get(aux));
-                return;
+            if (this.menu.get(pl).getCalorias() <= (this.maxCalorias + (this.maxCalorias * 0.1))
+                    && this.sumatoriaCalorias() <= (this.maxCalorias + (this.maxCalorias * 0.1))
+                    && !this.resultado.contains(this.menu.get(pl))
+                    && this.menu.get(pl).getCalorias() + this.sumatoriaCalorias() <= (this.maxCalorias + (this.maxCalorias * 0.1))) {
+                this.resultado.add(this.menu.get(pl));
+            } else {
+                pl--;
             }
 
-            if (this.menu.get(aux).getCalorias() + this.sumatoriaCalorias() < this.maxCalorias)
-                this.resultado.add(this.menu.get(aux));
-
             if (aux + 1 <= this.menu.size() - 1) {
-                algorítmica(aux + 1);
+                algorítmica(aux + 1, pl);
             }
         }
     }
 
 
     public Map<String, Object> calcularPlatos() {
-        this.algorítmica(0);
+        this.algorítmica(0, this.menu.size() - 1);
         Map<String, Object> res = new LinkedHashMap<>();
         res.put("list", resultado);
         res.put("total", this.sumatoriaCalorias());
