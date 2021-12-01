@@ -29,10 +29,11 @@ public class CaloriasNutricionista {
         if (this.sumatoriaCalorias() >= this.maxCalorias) {
             return;
         } else {
-            if (this.menu.get(pl).getCalorias() <= (this.maxCalorias + (this.maxCalorias * 0.1))
-                    && this.sumatoriaCalorias() <= (this.maxCalorias + (this.maxCalorias * 0.1))
+            double sum = sumatoriaCalorias();
+            if (this.menu.get(pl).getCalorias() <= this.maxCalorias
+                    && sum <= this.maxCalorias
                     && !this.resultado.contains(this.menu.get(pl))
-                    && this.menu.get(pl).getCalorias() + this.sumatoriaCalorias() <= (this.maxCalorias + (this.maxCalorias * 0.1))) {
+                    && this.menu.get(pl).getCalorias() + sum <= this.maxCalorias) {
                 this.resultado.add(this.menu.get(pl));
             } else {
                 pl--;
@@ -47,6 +48,10 @@ public class CaloriasNutricionista {
 
     public Map<String, Object> calcularPlatos() {
         this.algorítmica(0, this.menu.size() - 1);
+
+        if (this.sumatoriaCalorias() < maxCalorias)
+            this.resultado.clear();
+
         Map<String, Object> res = new LinkedHashMap<>();
         res.put("list", resultado);
         res.put("total", this.sumatoriaCalorias());
