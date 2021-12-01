@@ -18,7 +18,7 @@ public class Main {
         comidas.add(new Comida("f", 178D));
         comidas.add(new Comida("g", 323D));
 
-        CaloriasNutricionista calorias = new CaloriasNutricionista(comidas, 300D);
+        CaloriasNutricionista calorias = new CaloriasNutricionista(comidas, 500D);
         System.out.println(calorias.calcularPlatos().get("total"));
         System.out.println(calorias.calcularPlatos().get("list"));
 

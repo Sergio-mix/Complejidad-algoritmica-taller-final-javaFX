@@ -26,6 +26,8 @@ public class CaloriasNutricionista {
     }
 
     private void algorítmica(int aux, int pl) {
+        maxCalorias = maxCalorias + (maxCalorias * 0.02);
+
         if (this.sumatoriaCalorias() >= this.maxCalorias) {
             return;
         } else {
@@ -48,9 +50,6 @@ public class CaloriasNutricionista {
 
     public Map<String, Object> calcularPlatos() {
         this.algorítmica(0, this.menu.size() - 1);
-
-        if (this.sumatoriaCalorias() < maxCalorias)
-            this.resultado.clear();
 
         Map<String, Object> res = new LinkedHashMap<>();
         res.put("list", resultado);
