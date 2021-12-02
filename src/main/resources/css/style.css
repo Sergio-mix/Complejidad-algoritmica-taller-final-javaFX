@@ -1,0 +1,37 @@
+.body{
+    -fx-background-color: #11998e;
+    -fx-background-color: -webkit-linear-gradient(to right, #38ef7d, #11998e);
+    -fx-background-color: linear-gradient(to right, #38ef7d, #11998e);
+}
+
+.body-2{
+    -fx-background-color: #252525;
+}
+
+.pane-v1{
+    -fx-background-color: #252525;
+    -fx-effect: dropshadow(two-pass-box, #111111, 30, 0.4, 5, 0);
+    -fx-border-radius: 12 12 12 12;
+    -fx-background-radius: 12 12 12 12;
+}
+
+.button-v1{
+    -fx-background-color: #2f2e2e;
+    -fx-background-radius: 8 8 8 8;
+}
+
+.button-v1:hover{
+    -fx-pref-width: 120;
+    -fx-pref-height: 30;
+    -fx-effect: dropshadow(two-pass-box, #111111, 30, 0.4, 0, 0);
+}
+
+.button-v2{
+    -fx-background-color: rgba(72, 211, 57, 0.87);
+    -fx-background-radius: 8 8 8 8;
+}
+
+.text-field-v1{
+    -fx-background-color: #252525;
+    -fx-text-fill: #FFFFFF;
+}

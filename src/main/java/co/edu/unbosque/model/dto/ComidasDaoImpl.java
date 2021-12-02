@@ -95,9 +95,16 @@ public class ComidasDaoImpl implements IComidasDao {
         }
     }
 
-
     public Comidas getComidas_B() {
         return comidas_B;
+    }
+
+    public Plato[] platos_all() {
+        return comidas_B.getPlatos();
+    }
+
+    public Double caloriasNum() {
+        return comidas_B.getCalorias();
     }
 
 }
