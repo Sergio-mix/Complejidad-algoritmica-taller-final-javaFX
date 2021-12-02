@@ -15,6 +15,6 @@ public interface IComidasDao {
 
     boolean exists_A(Plato e);
 
-    void asignarPlatos(Plato[] elementos, boolean llena);
+    void asignarPlatos(Plato[] elementos);
 
 }

@@ -67,34 +67,19 @@ public class ComidasDaoImpl implements IComidasDao {
     }
 
     @Override
-    public void asignarPlatos(Plato[] elementos, boolean llena) {
-        if (llena) {
-            if (this.comidas_A.getCalorias() > this.comidas_B.getCalorias()) {
-
-                Plato[] elementosMochBase = this.comidas_A.getPlatos();
-                this.clear_B();
-
-                for (Plato e : elementosMochBase) {
-                    if (e != null) {
-                        this.add_B(e);
-                    }
-                }
-            }
-        } else {
-            for (Plato elemento : elementos) {
-                if (!this.exists_A(elemento)) {
-                    if (this.comidas_A.getMaximoCalorias() > this.comidas_A.getCalorias() + elemento.getCalorias()) {
-                        this.add_A(elemento);
-                        this.asignarPlatos(elementos, false);
-                        this.remove_A(elemento);
-                    } else {
-                        this.asignarPlatos(elementos, true);
-                    }
+    public void asignarPlatos(Plato[] elementos) {
+        for (Plato elemento : elementos) {
+            if (!this.exists_A(elemento)) {
+                if (this.comidas_A.getMaximoCalorias() > this.comidas_A.getCalorias() + elemento.getCalorias()) {
+                    this.add_A(elemento);
+                    this.asignarPlatos(elementos);
+                    this.remove_A(elemento);
+                } else {
+                    this.asignarPlatos(elementos);
                 }
             }
         }
     }
-
 
     public Comidas getComidas_B() {
         return comidas_B;

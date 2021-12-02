@@ -19,7 +19,7 @@ public class Main {
         Comidas m_opt = new Comidas(400D + 400D * 0.1, elementos.length);
 
         ComidasDaoImpl comidasDao = new ComidasDaoImpl(m_base, m_opt);
-        comidasDao.asignarPlatos(elementos, false);
+        comidasDao.asignarPlatos(elementos);
 
         System.out.println(comidasDao.getComidas_B());
     }
