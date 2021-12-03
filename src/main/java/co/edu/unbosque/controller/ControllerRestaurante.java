@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import co.edu.unbosque.components.ObjectView;
 import co.edu.unbosque.model.Comidas;
 import co.edu.unbosque.model.Plato;
 import co.edu.unbosque.model.dto.ComidasDaoImpl;
@@ -85,10 +86,10 @@ public class ControllerRestaurante implements Initializable {
                 elementos.add(new Plato(nombre, Double.parseDouble(calorias)));
                 addTableRegister(elementos);
             } else {
-                this.mostrarAlertWarning("Ingrese valores validos");
+                ObjectView.mostrarAlertWarning("Ingrese valores validos");
             }
         } catch (NumberFormatException ex) {
-            this.mostrarAlertWarning("Los tiene que ser numéricos");
+            ObjectView.mostrarAlertWarning("Los tiene que ser numéricos");
         }
     }
 
@@ -115,13 +116,13 @@ public class ControllerRestaurante implements Initializable {
                     txtCalorias.setText(String.valueOf(comidasDao.caloriasNum()));
                     this.addTableCalcular(comidasDao.platos_all());
                 } else {
-                    this.mostrarAlertWarning("Ingrese valores validos");
+                    ObjectView.mostrarAlertWarning("Ingrese valores validos");
                 }
             } else {
-                this.mostrarAlertWarning("Solo hay un plato disponible");
+                ObjectView.mostrarAlertWarning("Solo hay un plato disponible");
             }
         } catch (NumberFormatException ex) {
-            this.mostrarAlertWarning("Los tiene que ser numéricos");
+            ObjectView.mostrarAlertWarning("Los tiene que ser numéricos");
         }
     }
 
@@ -151,18 +152,5 @@ public class ControllerRestaurante implements Initializable {
     @FXML
     public void home() throws IOException {
         Main.setRoot("index");
-    }
-
-    /**
-     * Muestra alertas
-     * @param text
-     */
-    @FXML
-    public void mostrarAlertWarning(String text) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setHeaderText(null);
-        alert.setTitle("Advertencia");
-        alert.setContentText(text);
-        alert.showAndWait();
     }
 }
