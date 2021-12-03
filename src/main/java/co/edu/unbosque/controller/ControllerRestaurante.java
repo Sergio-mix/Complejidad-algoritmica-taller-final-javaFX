@@ -18,8 +18,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Clase ControllerRestaurante
+ */
 public class ControllerRestaurante implements Initializable {
-
+    /**
+     * Atributos
+     */
     @FXML
     private TableColumn<?, ?> coCaloriasCalcular;
 
@@ -52,6 +57,11 @@ public class ControllerRestaurante implements Initializable {
 
     private List<Plato> elementos = new ArrayList<>();
 
+    /**
+     * Metodo que inicializa componentes antes de todo
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -63,6 +73,9 @@ public class ControllerRestaurante implements Initializable {
         }
     }
 
+    /**
+     * Permite enviar informacion y registrar el nombre de la comida y sus calorias
+     */
     @FXML
     public void register() {
         try {
@@ -79,6 +92,10 @@ public class ControllerRestaurante implements Initializable {
         }
     }
 
+
+    /**
+     * Permite calcular el promedio de las calorias de los platos
+     */
     public void calcularPromedio() {
         try {
             String txt = this.txtCaloriasCalcular.getText();
@@ -108,22 +125,38 @@ public class ControllerRestaurante implements Initializable {
         }
     }
 
+    /**
+     * Agrega los platos a la tabla
+     * @param platos
+     */
     private void addTableRegister(List<Plato> platos) {
         ObservableList<Plato> list = FXCollections.observableArrayList(platos);
         tableRegister.setItems(list);
     }
 
+    /**
+     * Agrega los datos a la tabla
+     * @param platos
+     */
     @FXML
     private void addTableCalcular(Plato[] platos) {
         ObservableList<Plato> list = FXCollections.observableArrayList(platos);
         tableCalcular.setItems(list);
     }
 
+    /**
+     * Excepciones
+     * @throws IOException
+     */
     @FXML
     public void home() throws IOException {
         Main.setRoot("index");
     }
 
+    /**
+     * Muestra alertas
+     * @param text
+     */
     @FXML
     public void mostrarAlertWarning(String text) {
         Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -6,17 +6,28 @@ import co.edu.unbosque.model.idao.IComidasDao;
 
 import java.util.Arrays;
 
+/**
+ * Clase ComidasDaoImpl
+ */
 public class ComidasDaoImpl implements IComidasDao {
 
     private Comidas comidas_A;
     private Comidas comidas_B;
 
+    /**
+     * Constructor de la clase
+     * @param comidas_A
+     * @param comidas_B
+     */
     public ComidasDaoImpl(Comidas comidas_A, Comidas comidas_B) {
         this.comidas_A = comidas_A;
         this.comidas_B = comidas_B;
     }
 
-
+    /**
+     * Metodo para agregar el plato a las comidas
+     * @param e
+     */
     @Override
     public void add_A(Plato e) {
         for (int i = 0; i < this.comidas_A.getPlatos().length; i++) {
@@ -28,6 +39,10 @@ public class ComidasDaoImpl implements IComidasDao {
         }
     }
 
+    /**
+     * Metodo para agregar el plato a las comidas
+     * @param e
+     */
     @Override
     public void add_B(Plato e) {
         for (int i = 0; i < this.comidas_B.getPlatos().length; i++) {
@@ -39,12 +54,19 @@ public class ComidasDaoImpl implements IComidasDao {
         }
     }
 
+    /**
+     * Metodo para vaciar las calorias de un plato
+     */
     @Override
     public void clear_B() {
         this.comidas_B.setCalorias(0D);
         Arrays.fill(this.comidas_B.getPlatos(), null);
     }
 
+    /**
+     * Metodo que permite eliminar eliminar un plato de la comida
+     * @param e
+     */
     @Override
     public void remove_A(Plato e) {
         for (int i = 0; i < this.comidas_A.getPlatos().length; i++) {
@@ -56,6 +78,11 @@ public class ComidasDaoImpl implements IComidasDao {
         }
     }
 
+    /**
+     * Metodo que verifica si existen platos
+     * @param e
+     * @return
+     */
     @Override
     public boolean exists_A(Plato e) {
         for (Plato elemento : this.comidas_A.getPlatos()) {
@@ -66,6 +93,11 @@ public class ComidasDaoImpl implements IComidasDao {
         return false;
     }
 
+    /**
+     * Este metodo permite asignar la comida a los platos
+     * @param elementos
+     * @param llena
+     */
     @Override
     public void asignarPlatos(Plato[] elementos, boolean llena) {
         if (llena) {
@@ -95,14 +127,27 @@ public class ComidasDaoImpl implements IComidasDao {
         }
     }
 
+
+    /**
+     * getComidas_B
+     * @return
+     */
     public Comidas getComidas_B() {
         return comidas_B;
     }
 
+    /**
+     * platos_all
+     * @return
+     */
     public Plato[] platos_all() {
         return comidas_B.getPlatos();
     }
 
+    /**
+     * caloriasNum
+     * @return
+     */
     public Double caloriasNum() {
         return comidas_B.getCalorias();
     }
