@@ -58,7 +58,7 @@ public class ControllerRestaurante implements Initializable {
     private List<Plato> elementos = new ArrayList<>();
 
     /**
-     * Metodo que inicializa componentes antes de todo
+     * Método que inicializa componentes antes de todo
      * @param location
      * @param resources
      */
@@ -74,7 +74,7 @@ public class ControllerRestaurante implements Initializable {
     }
 
     /**
-     * Permite enviar informacion y registrar el nombre de la comida y sus calorias
+     * Permite enviar información y registrar el nombre de la comida y sus calorías
      */
     @FXML
     public void register() {
@@ -94,7 +94,7 @@ public class ControllerRestaurante implements Initializable {
 
 
     /**
-     * Permite calcular el promedio de las calorias de los platos
+     * Permite calcular el promedio de las calorías de los platos
      */
     public void calcularPromedio() {
         try {
@@ -145,7 +145,7 @@ public class ControllerRestaurante implements Initializable {
     }
 
     /**
-     * Excepciones
+     * Método para abrir la ventana principal
      * @throws IOException
      */
     @FXML

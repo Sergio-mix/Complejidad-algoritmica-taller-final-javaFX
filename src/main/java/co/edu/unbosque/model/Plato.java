@@ -38,7 +38,7 @@ public class Plato {
     }
 
     /**
-     * Metodo para validar si el plato se encuentra
+     * Método para validar si el plato se encuentra
      * @param obj
      * @return
      */
@@ -59,7 +59,7 @@ public class Plato {
     }
 
     /**
-     * Devuelve un string con el conmbre del plato y su total de calorias
+     * Devuelve un string con el nombre del plato y su total de calorías
      * @return
      */
     @Override

@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class ControllerIndex {
     /**
-     * Metodo para abrir ventana principal
+     * Metodo para abrir ventana de restaurante
      * @throws IOException
      */
     @FXML

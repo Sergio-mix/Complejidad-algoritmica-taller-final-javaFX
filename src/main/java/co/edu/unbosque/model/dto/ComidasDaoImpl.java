@@ -85,8 +85,8 @@ public class ComidasDaoImpl implements IComidasDao {
      */
     @Override
     public boolean exists_A(Plato e) {
-        for (Plato elemento : this.comidas_A.getPlatos()) {
-            if (elemento != null && elemento.equals(e)) {
+        for (Plato plato : this.comidas_A.getPlatos()) {
+            if (plato != null && plato.equals(e)) {
                 return true;
             }
         }
@@ -95,32 +95,32 @@ public class ComidasDaoImpl implements IComidasDao {
 
     /**
      * Este metodo permite asignar la comida a los platos
-     * @param elementos
-     * @param llena
+     * @param platosBase
+     * @param estado
      */
     @Override
-    public void asignarPlatos(Plato[] elementos, boolean llena) {
-        if (llena) {
+    public void asignarPlatos(Plato[] platosBase, boolean estado) {
+        if (estado) {
             if (this.comidas_A.getCalorias() > this.comidas_B.getCalorias()) {
 
-                Plato[] elementosMochBase = this.comidas_A.getPlatos();
+                Plato[] platos = this.comidas_A.getPlatos();
                 this.clear_B();
 
-                for (Plato e : elementosMochBase) {
+                for (Plato e : platos) {
                     if (e != null) {
                         this.add_B(e);
                     }
                 }
             }
         } else {
-            for (Plato elemento : elementos) {
+            for (Plato elemento : platosBase) {
                 if (!this.exists_A(elemento)) {
                     if (this.comidas_A.getMaximoCalorias() > this.comidas_A.getCalorias() + elemento.getCalorias()) {
                         this.add_A(elemento);
-                        this.asignarPlatos(elementos, false);
+                        this.asignarPlatos(platosBase, false);
                         this.remove_A(elemento);
                     } else {
-                        this.asignarPlatos(elementos, true);
+                        this.asignarPlatos(platosBase, true);
                     }
                 }
             }

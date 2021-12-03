@@ -1,6 +1,5 @@
 package co.edu.unbosque.model.idao;
 
-import co.edu.unbosque.model.Comidas;
 import co.edu.unbosque.model.Plato;
 
 public interface IComidasDao {
@@ -36,9 +35,9 @@ public interface IComidasDao {
 
     /**
      * Asignar las comidas a los platos
-     * @param elementos
-     * @param llena
+     * @param platosBase
+     * @param estado
      */
-    void asignarPlatos(Plato[] elementos, boolean llena);
+    void asignarPlatos(Plato[] platosBase, boolean estado);
 
 }
