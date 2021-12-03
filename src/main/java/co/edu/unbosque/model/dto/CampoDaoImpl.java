@@ -6,8 +6,13 @@ import co.edu.unbosque.model.idao.ICampoDao;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Clase CampoDaoImpl
+ */
 public class CampoDaoImpl implements ICampoDao {
-
+    /**
+     * Atributos
+     */
     private final String[] direcciones =
             {
                     "aR_IZ", "aR_DE", "aB_IZ", "aB_DE",
@@ -23,6 +28,16 @@ public class CampoDaoImpl implements ICampoDao {
     private final int p;
     private final int q;
 
+    /**
+     * Constructor de la clase
+     * @param posDestinoFilas
+     * @param posDestinoColumnas
+     * @param campoRaiz
+     * @param ancho
+     * @param alto
+     * @param saltoP
+     * @param saltoQ
+     */
     public CampoDaoImpl(int posDestinoFilas, int posDestinoColumnas, Campo campoRaiz, int ancho, int alto, int saltoP,
                         int saltoQ) {
         this.destinoFilas = posDestinoFilas;
@@ -34,6 +49,10 @@ public class CampoDaoImpl implements ICampoDao {
         this.q = saltoQ;
     }
 
+    /**Metodo que guarda el estado del salto inicial
+     *
+     * @return Map<String, Object>
+     */
     @Override
     public Map<String, Object> inicial() {
         Map<String, Object> map = new LinkedHashMap<>();
@@ -52,6 +71,12 @@ public class CampoDaoImpl implements ICampoDao {
         }
     }
 
+    /**
+     * Metodo el cual evalua la posicion de arriba izquierda
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] aR_IZ(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -64,6 +89,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de arriba derecha
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] aR_DE(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -76,6 +107,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de abajo izquierda
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] aB_IZ(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -88,6 +125,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de abajo derecha
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] aB_DE(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -100,6 +143,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de izquierda arriba
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] iZ_AR(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -112,6 +161,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de izquierda abajo
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] iZ_AB(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -124,6 +179,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de derecha arriba
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return int[]
+     */
     @Override
     public int[] dE_AR(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -136,6 +197,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual evalua la posicion de derecha abajo
+     * @param posicionFilas
+     * @param posicionColumnas
+     * @return  int[]
+     */
     @Override
     public int[] dE_AB(int posicionFilas, int posicionColumnas) {
         int[] posiciones = new int[2];
@@ -148,6 +215,12 @@ public class CampoDaoImpl implements ICampoDao {
         return posiciones;
     }
 
+    /**
+     * Metodo el cual verifica la posicion al evaluar la direccion y el campo del mismo
+     * @param campo
+     * @param direccion
+     * @return int[]
+     */
     @Override
     public int[] verificarPosicion(Campo campo, String direccion) {
         int fila = campo.getPosicionFila();
@@ -165,6 +238,11 @@ public class CampoDaoImpl implements ICampoDao {
         };
     }
 
+    /**
+     * Metodo el cual hace la seleccion de la mejor casilla en el campo
+     * @param campo
+     * @return Campo
+     */
     @Override
     public Campo seleccion(Campo campo) {
         Campo aux = null;
@@ -187,6 +265,12 @@ public class CampoDaoImpl implements ICampoDao {
         return aux;
     }
 
+    /**
+     * Metodo el cual valida Campo padre vs el campo hijo
+     * @param campo
+     * @param hijo
+     * @return Boolean
+     */
     @Override
     public Boolean validar(Campo campo, Campo hijo) {
         if (campo.getHijos().size() == 0) return false;
@@ -199,6 +283,11 @@ public class CampoDaoImpl implements ICampoDao {
         return false;
     }
 
+    /**
+     * Metodo el cual obtiene la altura deacuerdo al campo y valores ingresados
+     * @param campo
+     * @return Integer
+     */
     @Override
     public Integer obtenerAltura(Campo campo) {
         int contador = 1;
@@ -210,6 +299,11 @@ public class CampoDaoImpl implements ICampoDao {
         return contador;
     }
 
+    /**
+     * Metodo que verifica la posicion evaluando el destino de filas y columnas
+     * @param campo
+     * @return Boolean
+     */
     @Override
     public Boolean verificar(Campo campo) {
         if (campo.getPosicionFila() == destinoFilas && campo.getPosicionColumna() == destinoColumnas) {
@@ -220,6 +314,12 @@ public class CampoDaoImpl implements ICampoDao {
         return false;
     }
 
+    /**
+     * Metodo que realiza el desplazamiento verificando el campo y su direccion
+     * @param campo
+     * @param direccion
+     * @return Campo
+     */
     @Override
     public Campo desplazar(Campo campo, String direccion) {
         int[] posicionesNuevas = verificarPosicion(campo, direccion);
@@ -231,6 +331,12 @@ public class CampoDaoImpl implements ICampoDao {
         return null;
     }
 
+    /**
+     *Metodo que al realizar el salto devuelve el campo padre
+     * @param campo
+     * @return Campo
+     * @throws Exception
+     */
     @Override
     public Campo salto(Campo campo) throws Exception {
         campo.setEstado(true);
