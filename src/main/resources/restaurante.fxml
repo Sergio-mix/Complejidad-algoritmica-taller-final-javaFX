@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" styleClass="body-2" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.unbosque.controller.ControllerRestaurante">
+   <top>
+      <BorderPane prefHeight="112.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <top>
+            <Button mnemonicParsing="false" onAction="#home" prefHeight="26.0" prefWidth="76.0" styleClass="button-v2" text="Atras" textFill="WHITE" BorderPane.alignment="TOP_LEFT">
+               <BorderPane.margin>
+                  <Insets left="20.0" top="20.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </top>
+         <center>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaurante" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Text>
+         </center>
+      </BorderPane>
+   </top>
+   <center>
+      <HBox prefHeight="396.0" prefWidth="1000.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="438.0" prefWidth="300.0" spacing="30.0" styleClass="pane-v1">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="400.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="301.0" spacing="20.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtNombreRegister" promptText="Nombre" styleClass="text-field-v1" stylesheets="@css/style.css">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtCaloriasRegister" promptText="Calorias" styleClass="text-field-v1">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#register" styleClass="button-v2" stylesheets="@css/style.css" text="Register" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TableView fx:id="tableRegister" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/table.css">
+                    <columns>
+                      <TableColumn fx:id="coNombreRegister" prefWidth="151.20004498958588" text="Nombre" />
+                      <TableColumn fx:id="coCaloriasRegister" prefWidth="128.7999725341797" text="Calorias" />
+                    </columns>
+                  </TableView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="398.0" prefWidth="300.0" spacing="30.0" styleClass="pane-v1">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="173.0" prefWidth="400.0" styleClass="body-2">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="127.0" prefWidth="302.0" spacing="40.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtCaloriasCalcular" promptText="Calorias" styleClass="text-field-v1">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#calcularPromedio" styleClass="button-v2" stylesheets="@css/style.css" text="Calcular" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TableView fx:id="tableCalcular" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/table.css">
+                     <columns>
+                        <TableColumn fx:id="coNombreCalcular" prefWidth="143.99990689754486" text="Nombre" />
+                        <TableColumn fx:id="coCaloriasCalcular" prefWidth="134.40009307861328" text="Calorias" />
+                     </columns>
+                  </TableView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+            <Text fx:id="txtCalorias" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+               <HBox.margin>
+                  <Insets top="180.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" right="50.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>

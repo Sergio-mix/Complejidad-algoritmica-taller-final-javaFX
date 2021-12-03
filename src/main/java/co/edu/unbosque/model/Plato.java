@@ -6,15 +6,19 @@ import java.util.Objects;
 public class Plato {
 
     private String nombre;
-    private Double Calorias;
+    private Double calorias;
 
     public Plato(String nombre, Double Calorias) {
         this.nombre = nombre;
-        this.Calorias = Calorias;
+        this.calorias = Calorias;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public Double getCalorias() {
-        return Calorias;
+        return calorias;
     }
 
     @Override
@@ -30,14 +34,14 @@ public class Plato {
         }
         final Plato other = (Plato) obj;
 
-        return Objects.equals(this.Calorias, other.Calorias);
+        return Objects.equals(this.calorias, other.calorias);
     }
 
     @Override
     public String toString() {
         return "Plato{" +
                 "nombre='" + nombre + '\'' +
-                ", Calorias=" + Calorias +
+                ", Calorias=" + calorias +
                 '}';
     }
 }
