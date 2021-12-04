@@ -4,16 +4,19 @@ package co.edu.unbosque.model;
  * Clase Arbitro
  */
 public class Arbitro {
-	private String region;
 	private String nombre;
-	private int partidos;
-	private double puntuacionRecibida;
+	private String region;
+	private Integer partidos;
+	private Double puntuacionRecibida;
 
 	/**
 	 * Constructor de la clase
 	 */
-	public Arbitro() {
-
+	public Arbitro(String nombre, String region, Integer partidos, Double puntuacionRecibida) {
+		this.nombre = nombre;
+		this.region = region;
+		this.partidos = partidos;
+		this.puntuacionRecibida = puntuacionRecibida;
 	}
 
 	/**
@@ -80,7 +83,13 @@ public class Arbitro {
 		this.nombre = nombre;
 	}
 
-
-	
-
+	@Override
+	public String toString() {
+		return "Arbitro{" +
+				"nombre='" + nombre + '\'' +
+				", region='" + region + '\'' +
+				", partidos=" + partidos +
+				", puntuacionRecibida=" + puntuacionRecibida +
+				'}';
+	}
 }
