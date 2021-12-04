@@ -60,6 +60,7 @@ public class ControllerRestaurante implements Initializable {
 
     /**
      * Método que inicializa componentes antes de todo
+     *
      * @param location
      * @param resources
      */
@@ -85,12 +86,12 @@ public class ControllerRestaurante implements Initializable {
 
             double calorias1 = Double.parseDouble(calorias);
             if (!Objects.equals(nombre, "") && !Objects.equals(calorias, "")) {
-                if(calorias1 > 0){
+                if (calorias1 > 0) {
 
 
-                elementos.add(new Plato(nombre, Double.parseDouble(calorias)));
-                addTableRegister(elementos);
-                }else{
+                    elementos.add(new Plato(nombre, Double.parseDouble(calorias)));
+                    addTableRegister(elementos);
+                } else {
                     ObjectView.mostrarAlertWarning("Por favor ingrese valores positivos");
                 }
             } else {
@@ -120,18 +121,10 @@ public class ControllerRestaurante implements Initializable {
                     Comidas m_opt = new Comidas(calorias + calorias * 0.1, miarray.length);
 
                     ComidasDaoImpl comidasDao = new ComidasDaoImpl(m_base, m_opt);
-//                    if(calorias>comidasDao.caloriasNum()){
-                        comidasDao.asignarPlatos(miarray, false);
-                        txtCalorias.setText(String.valueOf(comidasDao.caloriasNum()));
-                        this.addTableCalcular(comidasDao.platos_all());
 
-//                    }else{
-//                        ObjectView.mostrarAlertWarning("Ingrese calculos coherentes");
-//
-//                    }
-
-
-
+                    comidasDao.asignarPlatos(miarray, false);
+                    txtCalorias.setText(String.valueOf(comidasDao.caloriasNum()));
+                    this.addTableCalcular(comidasDao.platos_all());
                 } else {
                     ObjectView.mostrarAlertWarning("Ingrese valores validos");
                 }
@@ -145,6 +138,7 @@ public class ControllerRestaurante implements Initializable {
 
     /**
      * Agrega los platos a la tabla
+     *
      * @param platos
      */
     private void addTableRegister(List<Plato> platos) {
@@ -154,6 +148,7 @@ public class ControllerRestaurante implements Initializable {
 
     /**
      * Agrega los datos a la tabla
+     *
      * @param platos
      */
     @FXML
@@ -164,6 +159,7 @@ public class ControllerRestaurante implements Initializable {
 
     /**
      * Método para abrir la ventana principal
+     *
      * @throws IOException
      */
     @FXML

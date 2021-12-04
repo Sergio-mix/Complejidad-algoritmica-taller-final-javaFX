@@ -81,10 +81,12 @@ public class ControllerConejo {
                 );
 
                 Map<String, Object> map = rama.inicial();
-
-                aux = (int) map.get("n");
-                matriz((Campo) map.get("ob"), ancho, alto, filaDestino, columnasDestino);
-
+                if (map != null) {
+                    aux = (int) map.get("n");
+                    matriz((Campo) map.get("ob"), ancho, alto, filaDestino, columnasDestino);
+                }else{
+                    ObjectView.mostrarAlertInfo("Valores no validos");
+                }
             } else {
                 ObjectView.mostrarAlertInfo("Hay campos vacíos");
             }

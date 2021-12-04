@@ -30,6 +30,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Constructor de la clase
+     *
      * @param posDestinoFilas
      * @param posDestinoColumnas
      * @param campoRaiz
@@ -49,7 +50,8 @@ public class CampoDaoImpl implements ICampoDao {
         this.q = saltoQ;
     }
 
-    /**Metodo que guarda el estado del salto inicial
+    /**
+     * Metodo que guarda el estado del salto inicial
      *
      * @return Map<String, Object>
      */
@@ -59,9 +61,8 @@ public class CampoDaoImpl implements ICampoDao {
         try {
             salto(main);
             if (campoSolucionado == null) {
-                map.put("status", false);
+                return null;
             } else {
-                map.put("status", false);
                 map.put("ob", campoSolucionado);
                 map.put("n", campoSolucionado.getN());
             }
@@ -73,6 +74,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de arriba izquierda
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -91,6 +93,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de arriba derecha
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -109,6 +112,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de abajo izquierda
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -127,6 +131,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de abajo derecha
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -145,6 +150,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de izquierda arriba
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -163,6 +169,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de izquierda abajo
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -181,6 +188,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de derecha arriba
+     *
      * @param posicionFilas
      * @param posicionColumnas
      * @return int[]
@@ -199,9 +207,10 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual evalua la posicion de derecha abajo
+     *
      * @param posicionFilas
      * @param posicionColumnas
-     * @return  int[]
+     * @return int[]
      */
     @Override
     public int[] dE_AB(int posicionFilas, int posicionColumnas) {
@@ -217,6 +226,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual verifica la posicion al evaluar la direccion y el campo del mismo
+     *
      * @param campo
      * @param direccion
      * @return int[]
@@ -240,6 +250,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual hace la seleccion de la mejor casilla en el campo
+     *
      * @param campo
      * @return Campo
      */
@@ -267,6 +278,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual valida Campo padre vs el campo hijo
+     *
      * @param campo
      * @param hijo
      * @return Boolean
@@ -285,6 +297,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo el cual obtiene la altura deacuerdo al campo y valores ingresados
+     *
      * @param campo
      * @return Integer
      */
@@ -301,6 +314,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo que verifica la posicion evaluando el destino de filas y columnas
+     *
      * @param campo
      * @return Boolean
      */
@@ -316,6 +330,7 @@ public class CampoDaoImpl implements ICampoDao {
 
     /**
      * Metodo que realiza el desplazamiento verificando el campo y su direccion
+     *
      * @param campo
      * @param direccion
      * @return Campo
@@ -332,41 +347,46 @@ public class CampoDaoImpl implements ICampoDao {
     }
 
     /**
-     *Metodo que al realizar el salto devuelve el campo padre
+     * Metodo que al realizar el salto devuelve el campo padre
+     *
      * @param campo
      * @return Campo
      * @throws Exception
      */
     @Override
-    public Campo salto(Campo campo) throws Exception {
-        campo.setEstado(true);
-        if (campo.getN() < aux) {
-            for (String movimiento : direcciones) {
-                Campo h = desplazar(campo, movimiento);
-                if (h != null) {
-                    if (campo.getPadre() == null) {
-                        if (!validar(campo, h)) {
-                            h.setN(obtenerAltura(h));
-                            verificar(h);
-                            campo.getHijos().add(h);
-                        }
+    public Campo salto(Campo campo) {
+        try {
+            campo.setEstado(true);
+            if (campo.getN() < aux) {
+                for (String movimiento : direcciones) {
+                    Campo h = desplazar(campo, movimiento);
+                    if (h != null) {
+                        if (campo.getPadre() == null) {
+                            if (!validar(campo, h)) {
+                                h.setN(obtenerAltura(h));
+                                verificar(h);
+                                campo.getHijos().add(h);
+                            }
 
-                    } else if (!(campo.getPadre().getPosicionFila() == h.getPosicionFila()
-                            && campo.getPadre().getPosicionColumna() == h.getPosicionColumna()))
-                        if (!validar(campo, h)) {
-                            h.setN(obtenerAltura(h));
-                            verificar(h);
-                            campo.getHijos().add(h);
-                        }
+                        } else if (!(campo.getPadre().getPosicionFila() == h.getPosicionFila()
+                                && campo.getPadre().getPosicionColumna() == h.getPosicionColumna()))
+                            if (!validar(campo, h)) {
+                                h.setN(obtenerAltura(h));
+                                verificar(h);
+                                campo.getHijos().add(h);
+                            }
+                    }
                 }
+                Campo aux = seleccion(campo);
+                if (aux != null) {
+                    salto(aux);
+                }
+            } else {
+                salto(campo.getPadre());
             }
-            Campo aux = seleccion(campo);
-            if (aux != null) {
-                salto(aux);
-            }
-        } else {
-            salto(campo.getPadre());
+            return campo;
+        } catch (Exception e) {
+            return null;
         }
-        return campo;
     }
 }
