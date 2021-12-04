@@ -82,9 +82,17 @@ public class ControllerRestaurante implements Initializable {
         try {
             String nombre = this.txtNombreRegister.getText();
             String calorias = this.txtCaloriasRegister.getText();
+
+            double calorias1 = Double.parseDouble(calorias);
             if (!Objects.equals(nombre, "") && !Objects.equals(calorias, "")) {
+                if(calorias1 > 0){
+
+
                 elementos.add(new Plato(nombre, Double.parseDouble(calorias)));
                 addTableRegister(elementos);
+                }else{
+                    ObjectView.mostrarAlertWarning("Por favor ingrese valores positivos");
+                }
             } else {
                 ObjectView.mostrarAlertWarning("Ingrese valores validos");
             }
@@ -105,16 +113,25 @@ public class ControllerRestaurante implements Initializable {
                     double calorias = Double.parseDouble(txt);
 
                     Plato[] miarray = new Plato[elementos.size()];
+                    Plato[] miarray2 = new Plato[elementos.size()];
                     miarray = elementos.toArray(miarray);
 
                     Comidas m_base = new Comidas(calorias + calorias * 0.1, miarray.length);
                     Comidas m_opt = new Comidas(calorias + calorias * 0.1, miarray.length);
 
                     ComidasDaoImpl comidasDao = new ComidasDaoImpl(m_base, m_opt);
+//                    if(calorias>comidasDao.caloriasNum()){
+                        comidasDao.asignarPlatos(miarray, false);
+                        txtCalorias.setText(String.valueOf(comidasDao.caloriasNum()));
+                        this.addTableCalcular(comidasDao.platos_all());
 
-                    comidasDao.asignarPlatos(miarray, false);
-                    txtCalorias.setText(String.valueOf(comidasDao.caloriasNum()));
-                    this.addTableCalcular(comidasDao.platos_all());
+//                    }else{
+//                        ObjectView.mostrarAlertWarning("Ingrese calculos coherentes");
+//
+//                    }
+
+
+
                 } else {
                     ObjectView.mostrarAlertWarning("Ingrese valores validos");
                 }
