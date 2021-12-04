@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" styleClass="body" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.unbosque.controller.ControllerIndex">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="90.0" BorderPane.alignment="CENTER">
@@ -61,7 +60,7 @@
                               <Font name="Arial Bold" size="24.0" />
                            </font>
                         </Text>
-                        <Text fill="#fcfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular carbitros" wrappingWidth="111.58203268051147">
+                        <Text fill="#fcfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular arbitros" wrappingWidth="111.58203268051147">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -93,12 +92,12 @@
                               <Font name="Arial Bold" size="24.0" />
                            </font>
                         </Text>
-                        <Text fill="#fcfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="..." wrappingWidth="111.58203268051147">
+                        <Text fill="#fcfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Ruta mas corta" wrappingWidth="111.58203268051147">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="button-v1" text="Entrar" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#openCampo" prefHeight="26.0" prefWidth="115.0" styleClass="button-v1" text="Entrar" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>

@@ -118,10 +118,10 @@ public class CampoDaoImpl implements ICampoDao {
         int[] posiciones = new int[2];
         if (posicionFilas + p > ALTO - 1)
             return null;
-        if (posicionColumnas - q < 0)
+        if (posicionColumnas + q > ANCHO - 1)
             return null;
         posiciones[0] = posicionFilas + p;
-        posiciones[1] = posicionColumnas - q;
+        posiciones[1] = posicionColumnas + q;
         return posiciones;
     }
 
