@@ -9,19 +9,19 @@ import java.util.List;
 public class Campo {
     private Campo padre;
     private List<Campo> hijos;
-    private int posicionFila;
-    private int posicionColumna;
+    private int fila;
+    private int columna;
     private boolean estado;
     private int n;
 
     /**
      * Constructor de la clase
-     * @param posicionFila
-     * @param posicionColumna
+     * @param fila
+     * @param columna
      */
-    public Campo(int posicionFila, int posicionColumna) {
-        this.posicionFila = posicionFila;
-        this.posicionColumna = posicionColumna;
+    public Campo(int fila, int columna) {
+        this.fila = fila;
+        this.columna = columna;
         hijos = new ArrayList<>();
     }
 
@@ -53,16 +53,16 @@ public class Campo {
      * getPosicionFila
      * @return int
      */
-    public int getPosicionFila() {
-        return posicionFila;
+    public int getFila() {
+        return fila;
     }
 
     /**
      * getPosicionColumna
      * @return int
      */
-    public int getPosicionColumna() {
-        return posicionColumna;
+    public int getColumna() {
+        return columna;
     }
 
     /**
@@ -106,8 +106,8 @@ public class Campo {
         return "Campo{" +
                 "padre=" + padre +
                 ", hijos=" + hijos +
-                ", posicionFila=" + posicionFila +
-                ", posicionColumna=" + posicionColumna +
+                ", posicionFila=" + fila +
+                ", posicionColumna=" + columna +
                 ", estado=" + estado +
                 ", altura=" + n +
                 '}';

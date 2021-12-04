@@ -110,7 +110,7 @@ public class ControllerConejo {
                     for (int j = 0; j < alto; j++) {
                         if (i == destinoFilas && j == destinoColumnas) {
                             matriz[i][j] = "-";
-                        } else if (i == posicion.getPosicionFila() && j == posicion.getPosicionColumna()) {
+                        } else if (i == posicion.getFila() && j == posicion.getColumna()) {
                             matriz[i][j] = "x";
                         } else if (matriz[i][j] != "x")
                             matriz[i][j] = "0";

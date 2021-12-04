@@ -233,8 +233,8 @@ public class CampoDaoImpl implements ICampoDao {
      */
     @Override
     public int[] verificarPosicion(Campo campo, String direccion) {
-        int fila = campo.getPosicionFila();
-        int columna = campo.getPosicionColumna();
+        int fila = campo.getFila();
+        int columna = campo.getColumna();
         return switch (direccion) {
             case "aR_IZ" -> this.aR_IZ(fila, columna);
             case "aR_DE" -> this.aR_DE(fila, columna);
@@ -260,8 +260,8 @@ public class CampoDaoImpl implements ICampoDao {
         int masCercano = Integer.MAX_VALUE;
         for (int i = 0; i < campo.getHijos().size(); i++) {
             if (!campo.getHijos().get(i).isEstado()) {
-                int sumaPosiciones = campo.getHijos().get(i).getPosicionColumna()
-                        + campo.getHijos().get(i).getPosicionFila();
+                int sumaPosiciones = campo.getHijos().get(i).getColumna()
+                        + campo.getHijos().get(i).getFila();
                 int sumaPosicionesDestino = destinoFilas + destinoColumnas;
                 int suma = Math.abs(sumaPosicionesDestino - sumaPosiciones);
                 if (suma < masCercano) {
@@ -287,8 +287,8 @@ public class CampoDaoImpl implements ICampoDao {
     public Boolean validar(Campo campo, Campo hijo) {
         if (campo.getHijos().size() == 0) return false;
         for (int i = 0; i < campo.getHijos().size(); i++) {
-            if (campo.getHijos().get(i).getPosicionFila() == hijo.getPosicionFila()
-                    && campo.getHijos().get(i).getPosicionColumna() == hijo.getPosicionColumna()) {
+            if (campo.getHijos().get(i).getFila() == hijo.getFila()
+                    && campo.getHijos().get(i).getColumna() == hijo.getColumna()) {
                 return true;
             }
         }
@@ -320,7 +320,7 @@ public class CampoDaoImpl implements ICampoDao {
      */
     @Override
     public Boolean verificar(Campo campo) {
-        if (campo.getPosicionFila() == destinoFilas && campo.getPosicionColumna() == destinoColumnas) {
+        if (campo.getFila() == destinoFilas && campo.getColumna() == destinoColumnas) {
             campoSolucionado = campo;
             aux = campo.getN();
             return true;
@@ -368,8 +368,8 @@ public class CampoDaoImpl implements ICampoDao {
                                 campo.getHijos().add(h);
                             }
 
-                        } else if (!(campo.getPadre().getPosicionFila() == h.getPosicionFila()
-                                && campo.getPadre().getPosicionColumna() == h.getPosicionColumna()))
+                        } else if (!(campo.getPadre().getFila() == h.getFila()
+                                && campo.getPadre().getColumna() == h.getColumna()))
                             if (!validar(campo, h)) {
                                 h.setN(obtenerAltura(h));
                                 verificar(h);
