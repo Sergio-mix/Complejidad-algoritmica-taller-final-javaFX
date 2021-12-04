@@ -24,7 +24,7 @@ import java.util.*;
  */
 public class ControllerRestaurante implements Initializable {
     /**
-     * Atributos
+     * Componentes
      */
     @FXML
     private TableColumn<?, ?> coCaloriasCalcular;

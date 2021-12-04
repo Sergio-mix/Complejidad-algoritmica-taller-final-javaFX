@@ -13,7 +13,14 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Clase ControllerConejo
+ */
 public class ControllerConejo {
+
+    /**
+     * Componentes
+     */
     @FXML
     private VBox container;
 
@@ -43,6 +50,9 @@ public class ControllerConejo {
 
     private int aux = 0;
 
+    /**
+     * Metodo que recolecta datos para posteriormente ser enviado al modelo y calcula las longitudes
+     */
     @FXML
     public void calcular() {
         try {
@@ -95,6 +105,14 @@ public class ControllerConejo {
         }
     }
 
+    /**
+     * Este metodo establece las dimensiones de la matriz en la vista y el campo registrado
+     * @param posicion
+     * @param ancho
+     * @param alto
+     * @param destinoFilas
+     * @param destinoColumnas
+     */
     @FXML
     private void matriz(Campo posicion, int ancho, int alto, int destinoFilas, int destinoColumnas) {
         try {
@@ -148,6 +166,10 @@ public class ControllerConejo {
         Main.setRoot("index");
     }
 
+    /**
+     * Metodo para agregar el objeto nodo al contenedor
+     * @param ob
+     */
     private void add(Object ob) {
         this.container.getChildren().add((Node) ob);
     }
